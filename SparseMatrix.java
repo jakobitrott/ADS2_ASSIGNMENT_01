@@ -11,10 +11,15 @@ package ads2;
 
 public class SparseMatrix {
     //Define member variables of SparseMatrix class
+    private SparseMatrixNode root;
+    private int noOfRows, noOfCols;
 
     //Default Constructor
     public SparseMatrix()
     {
+        noOfRows=noOfCols=0;
+
+        root = new SparseMatrixNode(0,0,0,new SparseMatrixNode(0,0,0,null,null),new SparseMatrixNode(0,0,0,null,null));
     }
     
     
@@ -26,6 +31,11 @@ public class SparseMatrix {
     */
     public void Create(int noofrows, int noofcols)
     {
+        this.noOfRows =noofrows;
+        this.noOfCols = noofcols;
+
+        root = new SparseMatrixNode(0,0,0,new SparseMatrixNode(noOfRows+1,0,0,null,null),new SparseMatrixNode(0,noOfCols+1,0,null,null));
+
     }
 
     /* Gets the size of this matrix 
@@ -33,7 +43,7 @@ public class SparseMatrix {
      * of rows and the second element is the number of columns */
     public int[] GetSize()
     {
-      int[] size = {0,0}; // size = {rows, columns}
+      int[] size = {this.noOfRows,this.noOfCols}; // size = {rows, columns}
       return size;
     }
 
@@ -45,10 +55,38 @@ public class SparseMatrix {
      */
     public void SetValue(int row, int col, int value)
     {
+        if(root.FindRow(row) == null) {
+            createRow(row);
+        }
+
+        if(root.FindColumn(col) == null){
+            createCol(col);
+        }
+
+        if(value == 0){
+
+
+        }
+        else
+        {
+
+
+
+        }
+
     }
-    
-    
-     /* Gets the value at [row, col] 
+
+    private void createRow(int row) {
+
+    }
+
+    private void createCol(int colume) {
+
+    }
+
+
+
+    /* Gets the value at [row, col]
      * E.G. Search down the dummy header column 0 looking for the specified row
      * If the row list doesn't exist then all entries along that row are zero
      * If the row list exists, search along it for the specified column

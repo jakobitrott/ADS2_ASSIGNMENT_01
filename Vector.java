@@ -131,23 +131,43 @@ public class Vector
   public void InsertItem(int index, String value)
   { 
       
-      if (myArray.length == 0) {
+      if (GetNoOfItems() == 0) {
 
             myArray[0] = value;
-        } else if (index < length) {
-            
-            myArray[index] = value;
-              
-            
-            
-        } else
-            AppendItem(value);
+        }
+        else
+            if(GetNoOfItems() < GetCapacity()) {
+
+
+                for (int i = GetNoOfItems()-1; i >= index ; --i) {
+                    myArray[i+1] = myArray[i];
+                    myArray[i] = value;
+                }
+                ++length;
+
+            }
+            else
+                if(GetNoOfItems() == GetCapacity()){
+
+                    resizeArray(null);
+                    for (int i = GetNoOfItems()-1; i >= index ; --i) {
+                        myArray[i+1] = myArray[i];
+                        myArray[i] = value;
+                    }
+                    ++length;
+
+                }
+
+
+
+
+
 
   }
   
   public void displayVector(){
   
-      for (int i = 0; i < myArray.length -1; i++) {
+      for (int i = 0; i < myArray.length; i++) {
           System.out.println("\nPosition:"  + i + " " + myArray[i]);
           
       }

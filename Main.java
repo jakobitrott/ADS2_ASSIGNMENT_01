@@ -19,7 +19,7 @@ public class Main
       //LList list = new LList();
       
       //LNode node = new LNode(null,null);
-      
+      /*
       
       LList myList = new LList();
       
@@ -35,8 +35,39 @@ public class Main
       //myList.DeleteItem(2);
       
       //System.out.println(myList.GetNoOfItems());
-      
-      
+      */
+
+
+/*
+      LList list = new LList();
+
+
+      list.AppendItem("1");
+      list.AppendItem("2");
+      list.AppendItem("3");
+      list.AppendItem("4");
+      list.AppendItem("5");
+
+
+
+      list.InsertItem(1, "1000");
+
+      System.out.println(list.ListAllIItem());
+
+
+
+      list.DeleteItem(2);
+*/
+//        Sort sort;
+
+       String[] data = {"pineapple", "Pango","apple", "Pomato", "tesus"};
+
+    // Sort.insertionSort(data);
+
+
+      Sort.insertionSort(data);
+
+
   }  
   
   
