@@ -60,7 +60,7 @@ public class Main
 */
 //        Sort sort;
 
-       String[] data = {"zze", "zyo","zuo", "zae", "zbz"};
+       String[] data = {"zana", "zah","zao", "zanz", "zand"};
 
     // Sort.insertionSort(data);
 

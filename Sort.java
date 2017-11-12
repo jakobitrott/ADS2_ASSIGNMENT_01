@@ -26,7 +26,7 @@ public class Sort
 
       for (int i = 1; i < data.length; ++i) {
 
-          j = i -1;
+          j = i-1;
 
           key = data[i];
 
@@ -60,18 +60,22 @@ public class Sort
 
     public static int BinarySearch(String data[], String item,int start, int end){
 
+
         int mid = (start+end)/2;
         int itemChar = item.toLowerCase().charAt(0);
         int midChar = data[mid].toLowerCase().charAt(0);
         int starChar = data[start].toLowerCase().charAt(0);
 
-        if(end<= start)
+
+        if(end< start)
         return(itemChar > starChar)? (start+1):start;
 
         if(itemChar == midChar) //write a loop to check next characters
-        {   int i = 1;
-            while(item.toLowerCase().charAt(i) != data[mid].toLowerCase().charAt(i))
-            {
+        {
+            int i = 0;
+
+            while(item.toLowerCase().charAt(i) == data[mid].toLowerCase().charAt(i)) {
+                i++;
                 if(item.toLowerCase().charAt(i) > data[mid].toLowerCase().charAt(i))
                 {
                     return BinarySearch(data,item,mid+1,end);
@@ -81,11 +85,18 @@ public class Sort
                 {
                     return BinarySearch(data,item,start,end-1);
                 }
-                i++;
+
+
+
+
+
 
             }
+
             return mid+1;
-        }
+            }
+
+
 
         if(itemChar > midChar)
             return BinarySearch(data,item,mid+1,end);
