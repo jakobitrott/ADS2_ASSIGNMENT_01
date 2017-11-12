@@ -9,6 +9,8 @@ public class Sort
    * The input data array is full (i.e. every valid index contains a String).
    * When this function completes, the data array will contain the sorted data 
    * items */
+    
+    //Apple Ant
   
   // NOTE: This is a class method since the signature includes the keyword static
   // You must complete two sorting algorithms, i.e. insertion and merge sort
@@ -46,7 +48,7 @@ public class Sort
     
     
     /* Implement the bottom-up merge sort algorithm for String items */
-    public static void mergeSort(String[] data, String[] moreData)
+    public static void mergeSort(String[] data)
   {
 
 
@@ -66,15 +68,31 @@ public class Sort
         if(end<= start)
         return(itemChar > starChar)? (start+1):start;
 
-        if(itemChar == midChar)
+        if(itemChar == midChar) //write a loop to check next characters
+        {   int i = 1;
+            while(item.toLowerCase().charAt(i) != data[mid].toLowerCase().charAt(i))
+            {
+                if(item.toLowerCase().charAt(i) > data[mid].toLowerCase().charAt(i))
+                {
+                    return BinarySearch(data,item,mid+1,end);
+                }
+
+                if(item.toLowerCase().charAt(i) < data[mid].toLowerCase().charAt(i))
+                {
+                    return BinarySearch(data,item,start,end-1);
+                }
+                i++;
+
+            }
             return mid+1;
+        }
 
         if(itemChar > midChar)
             return BinarySearch(data,item,mid+1,end);
 
         return BinarySearch(data,item,start,end-1);
 
-
+            //apple ant
 
     }
 
