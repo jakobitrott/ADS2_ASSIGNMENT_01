@@ -15,57 +15,9 @@ public class Main
   
     //VectorTest();
   
-   
-      //LList list = new LList();
-      
-      //LNode node = new LNode(null,null);
-      /*
-      
-      LList myList = new LList();
-      
-      myList.AppendItem("Hello");
-      myList.AppendItem("darkness");
-      myList.AppendItem("my");
-      myList.AppendItem("old");
-      myList.AppendItem("friend");
-  
-      myList.InsertItem(2, "jesus");
-      
-      System.out.println(myList.ListAllIItem());
-      //myList.DeleteItem(2);
-      
-      //System.out.println(myList.GetNoOfItems());
-      */
+    //QueueTest();
 
-
-/*
-      LList list = new LList();
-
-
-      list.AppendItem("1");
-      list.AppendItem("2");
-      list.AppendItem("3");
-      list.AppendItem("4");
-      list.AppendItem("5");
-
-
-
-      list.InsertItem(1, "1000");
-
-      System.out.println(list.ListAllIItem());
-
-
-
-      list.DeleteItem(2);
-*/
-//        Sort sort;
-
-       String[] data = {"zana", "zah","zao", "zanz", "zand"};
-
-    // Sort.insertionSort(data);
-
-
-      Sort.insertionSort(data);
+    LlistTest();
 
 
   }  
@@ -151,5 +103,77 @@ public class Main
       }
       
   }
-  
+
+    public static void QueueTest(){
+        Scanner reader = new Scanner(System.in);
+       ADS2Queue queue = new ADS2Queue();
+
+
+        System.out.println("How many items would you like to add?: ");
+        int amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+            System.out.println("\nPlease enter the value to push: ");
+            queue.Push(reader.next());
+        }
+
+
+        System.out.println("Number of Items: " +queue.GetNoOfItems());
+
+        System.out.println("How many items would you like to pop?: ");
+        amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+
+            System.out.println(queue.Pop());
+        }
+
+        System.out.println("Number of Items: " +queue.GetNoOfItems());
+
+
+
+    }
+
+    public static void LlistTest(){
+        Scanner reader = new Scanner(System.in);
+        LList list = new LList();
+
+
+        System.out.println("How many items would you like to add?: ");
+        int amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+            System.out.println("\nPlease enter the value to push: ");
+            list.AppendItem(reader.next());
+        }
+
+
+        System.out.println(list.ListAllIItem());
+
+        System.out.println("How many items would you like to insert?: ");
+        amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+
+            System.out.println("\nPlease enter the INDEX then the VALUE: ");
+            list.InsertItem(reader.nextInt(), reader.next());
+        }
+
+        System.out.println(list.ListAllIItem());
+
+        System.out.println("How many items would you like to delete?: ");
+        amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+
+            System.out.println("\nPlease enter the INDEX: ");
+            list.DeleteItem(reader.nextInt());
+            System.out.println(list.ListAllIItem());
+        }
+        System.out.println(list.ListAllIItem());
+
+
+    }
+
+
 }

@@ -79,32 +79,33 @@ public class LList {
      * if there are less items in the data structure than index.
      * The method must be able to insert new items at head of the linked list
      * This method must be able to insert new items as head if the current list is empty */
-    public void InsertItem(int index, String value) //break logic links, reconnect
+    public void InsertItem(int index, String value) //bug if you insert at final position
     {
         LNode tracker = myNode;
-
+        int i = 0;
         if (index > length) {
             System.out.println("Index is less than length!");
             AppendItem(value);
-        }
-
-        for (int i = 0; i < length; i++) {
-            if (i == index - 1) {
-
-                LNode newNode = new LNode(value, tracker.next);
-                length++;
-                newNode.next = tracker.next;
-                tracker.next = newNode;
-
-                tracker = tracker.next;
+        } else {
 
 
-            } else {
-                tracker = tracker.next;
+            while (tracker != null) {
+
+                if (i == index) {
+
+                    tracker.next = new LNode(tracker.GetDataItem(), tracker.GetNextNode());
+                    tracker.data = value;
+                    ++length;
+                    return;
+                } else {
+                    tracker = tracker.next;
+
+                    i++;
+
+                }
             }
 
         }
-
     }
 
     /* Removes the item at index from the data structure - if index is out of
@@ -115,18 +116,19 @@ public class LList {
 
         if(index == 0){
             myNode = tracker.next;
+            --length;
             return;
 
         }
 
-        for (int i = 0; tracker != null && i < index -1; i++)
+       /* for (int i = 0; tracker != null && i < index -1; i++)
         {
             tracker = tracker.next;
         }
+*/
+        else
 
-        LNode next = tracker.next.next;
-
-        tracker.next = next;
+        tracker.next = tracker.next.next;
 
         --length;
 
@@ -135,18 +137,21 @@ public class LList {
     public String ListAllIItem() {
 
         LNode tracker = myNode;
-        String listAll = "";
+        String list = "";
+        if (length != 0) {
+            do {
+                list += tracker.data + "->";
 
-        for (int i = 0; i <= length - 1; i++) {
-            listAll += tracker.data;
-            if (tracker.next != null) {
-                listAll += " + ";
+                tracker = tracker.next;
             }
-            tracker = tracker.next;
+            while (tracker != null);
 
-        }
-        return listAll;
+            return list;
+
+        } else
+            return ("LIST IS NULL");
     }
-
-
 }
+
+
+

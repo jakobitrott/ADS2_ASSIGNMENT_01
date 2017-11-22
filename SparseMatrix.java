@@ -64,7 +64,7 @@ public class SparseMatrix {
         }
 
         if(value == 0){
-
+        //link dummy node to the new node
 
         }
         else

@@ -50,9 +50,51 @@ public class Sort
     /* Implement the bottom-up merge sort algorithm for String items */
     public static void mergeSort(String[] data)
   {
+      if(data.length >= 2){
+
+          String[] left = new String[data.length/2];
+          String[] right = new String[data.length - data.length/2];
+
+          for (int i = 0; i < left.length; i++) {
+              left[i] = data[i];
+
+          }
+          for (int i = 0; i < right.length; i++) {
+              right[i] = data[i+data.length /2];
+
+          }
+
+          mergeSort(left);
+          mergeSort(right);
+
+          merge(data,left,right);
+
+
+      }
 
 
   }
+
+    private static void merge(String[] result, String[] left, String[] right){
+        int index1 = 0;
+        int index2 = 0;
+
+        for (int i = 0; i < result.length; i++) {
+            if(index2 >= right.length ||(index1 < left.length && left[index1].compareToIgnoreCase(right[index2])<0)){
+                result[i] = left[index1];
+                index1++;
+            }
+            else
+            {
+                result[i] = right[index2];
+                index2++;
+            }
+
+        }
+
+
+
+    }
 
 
 
@@ -85,11 +127,6 @@ public class Sort
                 {
                     return BinarySearch(data,item,start,end-1);
                 }
-
-
-
-
-
 
             }
 
