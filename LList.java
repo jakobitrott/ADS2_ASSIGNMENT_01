@@ -83,25 +83,23 @@ public class LList {
     {
         LNode tracker = myNode;
         int i = 0;
+
         if (index > length) {
             System.out.println("Index is less than length!");
             AppendItem(value);
         } else {
 
 
-            while (tracker != null) {
+            while (i < index) {
 
-                if (i == index) {
-
+                if (i == index -1) {
                     tracker.next = new LNode(tracker.GetDataItem(), tracker.GetNextNode());
                     tracker.data = value;
                     ++length;
                     return;
                 } else {
                     tracker = tracker.next;
-
                     i++;
-
                 }
             }
 
