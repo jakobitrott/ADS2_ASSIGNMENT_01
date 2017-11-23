@@ -111,43 +111,40 @@ public class LList {
     public void DeleteItem(int index) {
 
         LNode tracker = myNode;
-
+            length--;
         if(index == 0){
             myNode = tracker.next;
-            --length;
-            return;
 
+            return;
         }
 
-       /* for (int i = 0; tracker != null && i < index -1; i++)
-        {
+        for (int i = 0; tracker!=null && i < index-1; i++) {
             tracker = tracker.next;
         }
-*/
-        else
+        if(tracker == null || tracker.next == null)
+            return;
 
-        tracker.next = tracker.next.next;
+        LNode next = tracker.next.next;
+            tracker.next = next;
 
-        --length;
+        }
 
-    }
+
+
 
     public String ListAllIItem() {
 
         LNode tracker = myNode;
         String list = "";
-        if (length != 0) {
-            do {
-                list += tracker.data + "->";
 
-                tracker = tracker.next;
-            }
-            while (tracker != null);
+        while(tracker != null){
 
-            return list;
+            list += tracker.data + " ";
 
-        } else
-            return ("LIST IS NULL");
+            tracker = tracker.next;
+        }
+
+        return list;
     }
 }
 
