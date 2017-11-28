@@ -39,9 +39,9 @@ public class Sort
           }
           data[j+1] = key;
       }
-
       for(int i=0;i<data.length;i++)
           System.out.println(i+" : "+data[i]);
+
   }
 
 
@@ -73,6 +73,8 @@ public class Sort
       }
 
 
+
+
   }
 
     private static void merge(String[] result, String[] left, String[] right){
@@ -100,7 +102,7 @@ public class Sort
 
 
 
-    public static int BinarySearch(String data[], String item,int start, int end){
+    private static int BinarySearch(String data[], String item,int start, int end){
 
 
         int mid = (start+end)/2;

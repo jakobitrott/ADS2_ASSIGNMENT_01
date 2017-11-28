@@ -9,7 +9,7 @@ package ads2;
 
 // You may  find it useful to search out further reading related to "Sparse Matrix using Linked Lists"
 class SparseMatrix {
-    private SMNode root;
+    private SparseMatrixNode root;
     private int maxRows, maxCols;
 
     public SparseMatrix()
@@ -17,14 +17,14 @@ class SparseMatrix {
         maxRows = maxCols =0;
 
 
-        root=new SMNode(0, 0, 0, new SMNode(0, 0, 0, null, null), new SMNode(0, 0, 0, null, null));
+        root=new SparseMatrixNode(0, 0, 0, new SparseMatrixNode(0, 0, 0, null, null), new SparseMatrixNode(0, 0, 0, null, null));
     }
 
     public void Create(int noofrows, int noofcols)
     {
         this.maxRows =noofrows;
         this.maxCols =noofcols;
-        root=new SMNode(0, 0, 0, new SMNode(noofrows+1, 0, 0, null, null), new SMNode(0, noofcols+1, 0, null, null));
+        root=new SparseMatrixNode(0, 0, 0, new SparseMatrixNode(noofrows+1, 0, 0, null, null), new SparseMatrixNode(0, noofcols+1, 0, null, null));
     }
 
     public int GetNoOfRows()
@@ -40,7 +40,7 @@ class SparseMatrix {
 
     public int GetValue(int row, int col)
     {
-        SMNode current;                     //used to travel through the sparse matrix
+        SparseMatrixNode current;                     //used to travel through the sparse matrix
         int value = 0;                      // return value
 
         current = FindNode(row,col);       //finds the node at the row and column if it exists
@@ -53,10 +53,10 @@ class SparseMatrix {
         return value;
     }
 
-    private SMNode FindNode(int row, int col)
+    private SparseMatrixNode FindNode(int row, int col)
     {
 
-        SMNode node=root.FindRow(row);
+        SparseMatrixNode node=root.FindRow(row);
 
 
         return (node==null?null:node.FindColumn(col)); //returns a node if found, if not returns null
@@ -67,8 +67,8 @@ class SparseMatrix {
     public void SetValue(int row, int col, int value)
     {
 
-        SMNode previous = null; //manages the link between nodes
-        SMNode current;         //the node we use to travel
+        SparseMatrixNode previous = null; //manages the link between nodes
+        SparseMatrixNode current;         //the node we use to travel
 
 
         current = FindNode(row,col); //makes the current node the old one
@@ -115,7 +115,7 @@ class SparseMatrix {
 
             //crates a new node that is pointed to by the node before it and it points to the node to the right
 
-            previous.across = new SMNode(row,col,value, findDown(row,col).down, current);
+            previous.across = new SparseMatrixNode(row,col,value, findDown(row,col).down, current);
 
             findDown(row,col).down = previous.across;
 
@@ -126,8 +126,8 @@ class SparseMatrix {
 
 
     private void createRow(int row) {
-        SMNode previous = null;
-        SMNode current = root;
+        SparseMatrixNode previous = null;
+        SparseMatrixNode current = root;
 
         //travel down until current is the head row to be deleted
         //previous is the row header after
@@ -139,14 +139,14 @@ class SparseMatrix {
         }
 
         //creates a new header node that points to a node which points to nothing
-        previous.down = new SMNode(row,0,0,current, new SMNode(row,maxCols+1,0,null,null));
+        previous.down = new SparseMatrixNode(row,0,0,current, new SparseMatrixNode(row,maxCols+1,0,null,null));
 
     }
 
     private void deleteRow(int row){
 
-        SMNode previous = null;
-        SMNode current = root;
+        SparseMatrixNode previous = null;
+        SparseMatrixNode current = root;
 
         //travels down until current is the row to be deleted
         //prev is the row after it
@@ -160,8 +160,8 @@ class SparseMatrix {
     }
 
     private void createColumn(int column) {
-        SMNode previous = null;
-        SMNode current = root;
+        SparseMatrixNode previous = null;
+        SparseMatrixNode current = root;
 
         //travels across until current is the column header to be deleted
         // prev is the column after it
@@ -171,15 +171,15 @@ class SparseMatrix {
         }
 
         //crates a new head node that points to a node which points to nothing
-        previous.across = new SMNode(0,column,0, new SMNode(maxRows + 1,column,0,null,null),current);
+        previous.across = new SparseMatrixNode(0,column,0, new SparseMatrixNode(maxRows + 1,column,0,null,null),current);
 
 
     }
 
     private void deleteCol(int col){
 
-        SMNode previous = null;
-        SMNode current = root;
+        SparseMatrixNode previous = null;
+        SparseMatrixNode current = root;
 
         //travels across until current is the col to be deleted
         //previous is the column header after
@@ -196,9 +196,9 @@ class SparseMatrix {
 
 
 
-    private SMNode findDown(int row,int col){
-        SMNode current = root;
-        SMNode previous = null;
+    private SparseMatrixNode findDown(int row, int col){
+        SparseMatrixNode current = root;
+        SparseMatrixNode previous = null;
 
         //travel across the link list to the correct column
         while(current.col < col)
@@ -219,9 +219,9 @@ class SparseMatrix {
 
     }
 
-    private SMNode findAcross(int row, int col){
-        SMNode current = root;
-        SMNode previous = null;
+    private SparseMatrixNode findAcross(int row, int col){
+        SparseMatrixNode current = root;
+        SparseMatrixNode previous = null;
 
         //travel across the linked list to the correct row
         while(current.row < row)
@@ -242,7 +242,7 @@ class SparseMatrix {
     private boolean isRowEmpty(int row){
 
         boolean rowEmpty = true;
-        SMNode tracker =  root;
+        SparseMatrixNode tracker =  root;
 
         //travel across the row
         while(tracker.row < row)
@@ -262,7 +262,7 @@ class SparseMatrix {
 
         boolean colEmpty = true;
 
-        SMNode tracker = root;
+        SparseMatrixNode tracker = root;
 
         //travel across the column
         while(tracker.col < col)
@@ -283,7 +283,7 @@ class SparseMatrix {
     public String toString()
     {
         String res="";
-        SMNode tmp=root;
+        SparseMatrixNode tmp=root;
         while (tmp!=null)
         {
             res+=tmp.toString()+"\n";

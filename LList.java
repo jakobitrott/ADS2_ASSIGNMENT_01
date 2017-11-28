@@ -29,6 +29,7 @@ public class LList {
     /* Return the number of items contained within this data structure.
      * Use recursion to count the number of nodes in the linked list */
     public int GetNoOfItems() {
+
         return GetNoOfItems(length, myNode);
     }
 
@@ -40,6 +41,7 @@ public class LList {
             ++length;
             GetNoOfItems(length, tracker);
         }
+        --length;
         return length;
     }
 
@@ -47,7 +49,26 @@ public class LList {
      * is out of bounds.
      * Use recursion to access index n*/
     public String GetItemByIndex(int index) {
-        return null;
+
+
+        int i = 0;
+
+       return GetItemByIndex(index,i,myNode);
+
+    }
+
+    public String GetItemByIndex(int index, int i, LNode tracker){
+
+        while(i < index){
+            tracker = tracker.next;
+            i++;
+            GetItemByIndex(index,i,tracker);
+        }
+
+        return tracker.data;
+
+
+
     }
 
 
@@ -82,27 +103,30 @@ public class LList {
     public void InsertItem(int index, String value) //bug if you insert at final position
     {
         LNode tracker = myNode;
-        int i = 0;
+
 
         if (index > length) {
             System.out.println("Index is less than length!");
             AppendItem(value);
-        } else {
-
-
-            while (i < index) {
-
-                if (i == index -1) {
-                    tracker.next = new LNode(tracker.GetDataItem(), tracker.GetNextNode());
-                    tracker.data = value;
-                    ++length;
-                    return;
-                } else {
+        }
+        if(index == 0)
+        {
+            LNode newNode = new LNode(value,myNode);
+            myNode = newNode;
+            length++;
+        }
+        else {
+            for (int i = 0; i < length; i++) {
+                if(i == index) {
+                    LNode newNode = new LNode(value, tracker.next);
+                    length++;
+                    newNode.next = tracker.next;
+                    tracker.next = newNode;
                     tracker = tracker.next;
-                    i++;
                 }
+                else
+                    tracker = tracker.next;
             }
-
         }
     }
 

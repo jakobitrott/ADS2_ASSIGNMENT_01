@@ -2,11 +2,11 @@ package ads2;
 
 /* Use this class to hold node information within the Sparse Matrix data structure 
  * Sparse matrices hold integer numbers*/
-class SMNode {
+class SparseMatrixNode {
     public int row, col, value;
-    public SMNode down, across;
+    public SparseMatrixNode down, across;
 
-    public SMNode(int row, int col, int value, SMNode down, SMNode across)
+    public SparseMatrixNode(int row, int col, int value, SparseMatrixNode down, SparseMatrixNode across)
     {
         this.row=row;
         this.col=col;
@@ -16,7 +16,7 @@ class SMNode {
     }
 
 
-    public SMNode FindRow(int row)
+    public SparseMatrixNode FindRow(int row)
     {
 
         if (this.row==row)
@@ -29,7 +29,7 @@ class SMNode {
 
 
 
-    public SMNode FindColumn(int col)
+    public SparseMatrixNode FindColumn(int col)
     {
         if (this.col==col)
             return this;

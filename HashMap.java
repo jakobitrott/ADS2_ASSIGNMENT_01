@@ -39,7 +39,7 @@ public class HashMap
           hash = hash*31 + key.charAt(i);
       }
 
-    return hash;
+    return (hash%key.length());
   }
 
 

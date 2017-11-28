@@ -168,6 +168,7 @@ public class Vector
   public void displayVector(){
   
       for (int i = 0; i < myArray.length; i++) {
+          if(myArray[i] != null)
           System.out.println("\nPosition:"  + i + " " + myArray[i]);
           
       }
