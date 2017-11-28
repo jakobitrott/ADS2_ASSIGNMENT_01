@@ -33,7 +33,13 @@ public class HashMap
    * an index and return that */
   private int HashFunction(String key)
   {
-    return -1;
+      int hash = 7;
+
+      for (int i = 0; i < key.length(); i++) {
+          hash = hash*31 + key.charAt(i);
+      }
+
+    return hash;
   }
 
 
