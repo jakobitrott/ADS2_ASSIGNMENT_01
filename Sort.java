@@ -39,8 +39,7 @@ public class Sort
           }
           data[j+1] = key;
       }
-      for(int i=0;i<data.length;i++)
-          System.out.println(i+" : "+data[i]);
+
 
   }
 
@@ -73,8 +72,6 @@ public class Sort
       }
 
 
-
-
   }
 
     private static void merge(String[] result, String[] left, String[] right){
@@ -97,6 +94,12 @@ public class Sort
 
 
     }
+
+    public static void display(String[] data){
+        for(int i=0;i<data.length;i++)
+            System.out.println(i+" : "+data[i]);
+    }
+
 
 
 

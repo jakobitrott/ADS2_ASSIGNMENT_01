@@ -19,7 +19,7 @@ public class LList {
 
     //Default constructor
     public LList() {
-        System.out.println("LList Constructor Called");
+
 
     }
 
@@ -105,10 +105,10 @@ public class LList {
         LNode tracker = myNode;
 
 
-        if (index > length) {
-            System.out.println("Index is less than length!");
+        if (index >= length) {
             AppendItem(value);
         }
+        else
         if(index == 0)
         {
             LNode newNode = new LNode(value,myNode);

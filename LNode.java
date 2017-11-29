@@ -10,7 +10,6 @@ public class LNode
     
     //constructor
     public LNode(String newData, LNode nextNode){
-        System.out.println("LNode constructor called");
         this.data = newData;
         this.next = nextNode;
     }

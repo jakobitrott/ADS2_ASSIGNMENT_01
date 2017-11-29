@@ -58,7 +58,7 @@ public class ADS2Queue
     tracker.prev = head;
 
     size--;
-    return tracker.data;
+    return ("Popping: " + tracker.data);
 
 
 

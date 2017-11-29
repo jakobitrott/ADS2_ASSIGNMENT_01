@@ -11,51 +11,41 @@ public class Main {
         //You must keep evidence of your tests in this main method.
       
     /*Test your classes below */
-
-
-
-
-
-
-
-
-
-
         Scanner reader = new Scanner(System.in);
         boolean test = true;
         int switchSelect;
         String selectDecision;
-        
+
         while(test)
         {
             System.out.println("\n0: Vector");
-            System.out.println("1: Queue");
-            System.out.println("2: LinkedList");
-            System.out.println("3: HashMap");
-            System.out.println("4: SparseMatrix");
-            System.out.println("5: Sort");
+            System.out.println("1: LinkedList");
+            System.out.println("2: HashMap");
+            System.out.println("3: Sort");
+            System.out.println("4: Queue");
+            System.out.println("5: SparseMatrix");
 
             System.out.println("\nPlease enter the corresponding number 0-5: ");
             switchSelect = reader.nextInt();
 
             switch (switchSelect){
                 case 0:
-                    // VectorTest();
+                    VectorTest();
                     break;
                 case 1:
-                    //QueueTest();
+                    LlistTest();
                     break;
                 case 2:
-                    //LlistTest();
-                        break;
+                    hashTest();
+                    break;
                 case 3:
-                    //hashTest();
+                    sortTest();
                     break;
                 case 4:
-                    //sparseMatrixTest();
+                    QueueTest();
                     break;
                 case 5:
-                    //sortTest();
+                    sparseMatrixTest();
                     break;
                 default:
                     System.out.println("\nERROR PLEASE SELECT NUMBER 0-5");
@@ -190,10 +180,10 @@ public class Main {
             list.DeleteItem(reader.nextInt());
             System.out.println(list.ListAllIItem());
         }
-        System.out.println(list.ListAllIItem());
+
 
         System.out.println("\nNumber of items in linked list: " + list.GetNoOfItems());
-
+        System.out.println(list.ListAllIItem());
         System.out.println("\nEnter an index to look up the data value: ");
         amount = reader.nextInt();
         System.out.println(list.GetItemByIndex(amount));
@@ -210,7 +200,8 @@ public class Main {
 
 
         System.out.println(hash.SearchValue("meme"));
-        System.out.println(hash.SearchValue("key"));
+        hash.DeleteItem("meme");
+        System.out.println(hash.SearchValue("meme"));
 
     }
 
@@ -219,8 +210,8 @@ public class Main {
         Scanner reader = new Scanner(System.in);
         int amount;
 
-
-        matrix.Create(4, 4);
+        System.out.println("Please enter the size of matrix you'd like to create (ROW,COL): ");
+        matrix.Create(reader.nextInt(), reader.nextInt());
 
         DisplayMatrix(matrix);
 
@@ -234,7 +225,7 @@ public class Main {
         }
 
         for (int i = 1; i <= amount ; i++) {
-            System.out.println("\nPlease enter the ROW, COLUMN, VALUE: ");
+            System.out.println("\nPlease enter the ROW, COLUMN, VALUE in the specified range: ");
             matrix.SetValue(reader.nextInt(),reader.nextInt(),reader.nextInt());
             DisplayMatrix(matrix);
         }
@@ -267,7 +258,7 @@ public class Main {
 
 
 
-        System.out.println("\nHow many words: ");
+        System.out.println("\nHow many words for insertion sort: ");
         amount = reader.nextInt();
 
         String[] words = new String[amount];
@@ -276,9 +267,25 @@ public class Main {
             System.out.println("\nPlease enter a word: ");
             words[i] = reader.next();
         }
-
+        Sort.display(words);
         Sort.insertionSort(words);
-        Sort.mergeSort(words);
+        System.out.println("\n");
+        Sort.display(words);
+
+        System.out.println("\nHow many words for binary sort: ");
+        amount = reader.nextInt();
+
+        String[] words1 = new String[amount];
+
+        for (int i = 0; i < words1.length; i++) {
+            System.out.println("\nPlease enter a word: ");
+            words1[i] = reader.next();
+        }
+
+        Sort.display(words1);
+        Sort.mergeSort(words1);
+        System.out.println("\n");
+        Sort.display(words1);
     }
 
 }

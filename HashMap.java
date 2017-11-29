@@ -55,13 +55,29 @@ public class HashMap
   {
     int index=HashFunction(key);
 
-    if(map[index] == null)
-    {
-      map[index] = new HashPair(value, key);
+    if(key == null){
+      System.out.println("key is null");
+      return;
     }
-    else
-    {
-      map[index].setHashPair(new HashPair(value, key));
+
+    HashPair entry = map[index];
+
+    while (entry != null && !entry.getKey().equals(key)){
+
+      index = (index + 1) % size;
+
+      entry = map[index];
+    }
+
+    if(entry == null){
+      map[index] = new HashPair(value,key);
+    }
+    else {
+      while (entry != null) {
+        entry = entry.next;
+        index++;
+      }
+      map[index] = new HashPair(value,key);
     }
   }
 
@@ -121,5 +137,21 @@ public class HashMap
 
 
   }
+
+  /*
+   *  if(map[index] == null)
+    {
+      map[index] = new HashPair(value, key);
+    }
+    else
+    {
+      map[index].setHashPair(new HashPair(value, key));
+    }
+    *
+    *
+    *
+    *
+    *
+    * */
 }
 
