@@ -26,15 +26,15 @@ public class Sort
 
       for (int i = 1; i < data.length; ++i) {
 
-          j = i-1;
+          j = i-1; //insert the one previous
 
-          key = data[i];
+          key = data[i]; //get the string value
 
-          location = BinarySearch(data,key,0,j);
+          location = BinarySearch(data,key,0,j); //find position to insert at
 
           while(j>=location){
 
-              data[j+1] = data[j];
+              data[j+1] = data[j]; //reshuffle
               j--;
           }
           data[j+1] = key;
@@ -43,9 +43,6 @@ public class Sort
 
   }
 
-
-    
-    
     /* Implement the bottom-up merge sort algorithm for String items */
     public static void mergeSort(String[] data)
   {
@@ -144,8 +141,6 @@ public class Sort
             return BinarySearch(data,item,mid+1,end);
 
         return BinarySearch(data,item,start,end-1);
-
-            //apple ant
 
     }
 

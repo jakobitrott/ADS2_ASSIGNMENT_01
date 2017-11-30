@@ -131,7 +131,7 @@ public class LList {
     }
 
     /* Removes the item at index from the data structure - if index is out of
-     * bounds then the data structure remains unchanged */  //TODO: break logic links, reconnect
+     * bounds then the data structure remains unchanged */
     public void DeleteItem(int index) {
 
         LNode tracker = myNode;

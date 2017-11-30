@@ -56,7 +56,7 @@ public class HashMap
     int index=HashFunction(key);
 
     if(key == null){
-      System.out.println("key is null");
+      System.out.println("Key is null");
       return;
     }
 
@@ -94,7 +94,7 @@ public class HashMap
 
     if(map[index]==null)
     {
-      System.out.println("NULL\n");
+      System.out.println("index is NULL\n");
     }
     else if (map[index] != null)
     {
@@ -122,13 +122,13 @@ public class HashMap
   {
     int index=HashFunction(key);
 
-    if(map[index] == null)
+    if(map[index].equals(null))
     {
       return null;
     }
-    else if(map[index].getKey() == key)
+    else if(map[index].getKey().equals(key))
     {
-      return map[index].getData();
+        return map[index].getData();
     }
     else
     {
@@ -138,20 +138,11 @@ public class HashMap
 
   }
 
-  /*
-   *  if(map[index] == null)
-    {
-      map[index] = new HashPair(value, key);
-    }
-    else
-    {
-      map[index].setHashPair(new HashPair(value, key));
-    }
-    *
-    *
-    *
-    *
-    *
-    * */
+  public void printHashMap(){
+
+      for (int i = 0; i < map.length; i++) {
+          System.out.println(map[i] + "\n");
+      }
+  }
 }
 

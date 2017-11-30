@@ -4,6 +4,21 @@ import java.util.Scanner;
 
 public class Main {
 
+    /*
+            Jakob Trott - b5015250
+
+    *       NOTES FOR JING
+    *       ----------------
+    *
+    *       - Hash function is't working properly but I hope I can get some marks for it
+    *       - Sorry that I didn't comment any of it. If you don't understand my logic email me
+    *
+    *
+    *
+    *
+    *
+    * */
+
 
     public static void main(String[] args) {
         //All required data structures and algorithms must be defined in the classes files provide.
@@ -115,35 +130,6 @@ public class Main {
 
     }
 
-    public static void QueueTest() {
-        Scanner reader = new Scanner(System.in);
-        ADS2Queue queue = new ADS2Queue();
-
-
-        System.out.println("How many items would you like to add?: ");
-        int amount = reader.nextInt();
-
-        for (int i = 1; i <= amount; i++) {
-            System.out.println("\nPlease enter the value to push: ");
-            queue.Push(reader.next());
-        }
-
-
-        System.out.println("Number of Items: " + queue.GetNoOfItems());
-
-        System.out.println("How many items would you like to pop?: ");
-        amount = reader.nextInt();
-
-        for (int i = 1; i <= amount; i++) {
-
-            System.out.println(queue.Pop());
-        }
-
-        System.out.println("Number of Items: " + queue.GetNoOfItems());
-
-
-    }
-
     public static void LlistTest() {
         Scanner reader = new Scanner(System.in);
         LList list = new LList();
@@ -192,18 +178,113 @@ public class Main {
     }
 
     public static void hashTest() {
-        HashMap hash = new HashMap(50000);
+        HashMap hash = new HashMap(50);
+        Scanner reader = new Scanner(System.in);
+        int amount;
+        String key;
 
 
-        hash.AddItem("meme", "50");
-        hash.AddItem("meme", "100");
+        System.out.println("\nHow many items would you like to add to the hashmap: ");
+        amount = reader.nextInt();
 
 
-        System.out.println(hash.SearchValue("meme"));
-        hash.DeleteItem("meme");
-        System.out.println(hash.SearchValue("meme"));
+        for (int i = 0; i < amount; i++) {
+        System.out.println("\nPlease enter a key followed by a value: ");
+        hash.AddItem(reader.next(),reader.next());
+        }
+
+        //hash.printHashMap();
+
+        System.out.println("\nHow many items would you like to search?: ");
+        amount = reader.nextInt();
+
+        for (int i = 0; i < amount ; i++) {
+
+            System.out.println("\nEnter a key to search:");
+            key = reader.next();
+        System.out.println(hash.SearchValue(key));
+        }
+
+        System.out.println("\nHow many items would you like to delete?: ");
+        amount = reader.nextInt();
+
+        for (int i = 0; i < amount; i++) {
+
+            System.out.println("\nEnter a key to delete: ");
+             key = reader.next();
+             hash.DeleteItem(key);
+
+        }
+
+
 
     }
+
+    public static void sortTest(){
+        Scanner reader = new Scanner(System.in);
+        int amount;
+
+
+
+        System.out.println("\nHow many words for insertion sort: ");
+        amount = reader.nextInt();
+
+        String[] words = new String[amount];
+
+        for (int i = 0; i < words.length; i++) {
+            System.out.println("\nPlease enter a word: ");
+            words[i] = reader.next();
+        }
+        Sort.display(words);
+        Sort.insertionSort(words);
+        System.out.println("\n");
+        Sort.display(words);
+
+        System.out.println("\nHow many words for binary sort: ");
+        amount = reader.nextInt();
+
+        String[] words1 = new String[amount];
+
+        for (int i = 0; i < words1.length; i++) {
+            System.out.println("\nPlease enter a word: ");
+            words1[i] = reader.next();
+        }
+
+        Sort.display(words1);
+        Sort.mergeSort(words1);
+        System.out.println("\n");
+        Sort.display(words1);
+    }
+
+    public static void QueueTest() {
+        Scanner reader = new Scanner(System.in);
+        ADS2Queue queue = new ADS2Queue();
+
+
+        System.out.println("How many items would you like to add?: ");
+        int amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+            System.out.println("\nPlease enter the value to push: ");
+            queue.Push(reader.next());
+        }
+
+
+        System.out.println("Number of Items: " + queue.GetNoOfItems());
+
+        System.out.println("How many items would you like to pop?: ");
+        amount = reader.nextInt();
+
+        for (int i = 1; i <= amount; i++) {
+
+            System.out.println(queue.Pop());
+        }
+
+        System.out.println("Number of Items: " + queue.GetNoOfItems());
+
+
+    }
+
 
     public static void sparseMatrixTest() {
         SparseMatrix matrix = new SparseMatrix();
@@ -252,40 +333,6 @@ public class Main {
 
     }
 
-    public static void sortTest(){
-        Scanner reader = new Scanner(System.in);
-        int amount;
 
-
-
-        System.out.println("\nHow many words for insertion sort: ");
-        amount = reader.nextInt();
-
-        String[] words = new String[amount];
-
-        for (int i = 0; i < words.length; i++) {
-            System.out.println("\nPlease enter a word: ");
-            words[i] = reader.next();
-        }
-        Sort.display(words);
-        Sort.insertionSort(words);
-        System.out.println("\n");
-        Sort.display(words);
-
-        System.out.println("\nHow many words for binary sort: ");
-        amount = reader.nextInt();
-
-        String[] words1 = new String[amount];
-
-        for (int i = 0; i < words1.length; i++) {
-            System.out.println("\nPlease enter a word: ");
-            words1[i] = reader.next();
-        }
-
-        Sort.display(words1);
-        Sort.mergeSort(words1);
-        System.out.println("\n");
-        Sort.display(words1);
-    }
 
 }
